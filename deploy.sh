@@ -13,5 +13,4 @@ fi
 
 dotnet publish -c Release
 docker build -t $IMAGE_NAME -f Dockerfile .
-docker create --name $CONTAINER_NAME $IMAGE_NAME
 docker run -d --name $CONTAINER_NAME -p 8080:8080 $IMAGE_NAME
