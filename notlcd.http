@@ -1,0 +1,6 @@
+@notlcd_HostAddress = http://localhost:5244
+
+GET {{notlcd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
