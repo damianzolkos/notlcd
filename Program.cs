@@ -21,9 +21,9 @@ app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
-app.MapGet("/notification/add", async (string firstLine, string? secondLine, CancellationToken cancellationToken) =>
+app.MapGet("/notification/add", async (string firstLine, string? secondLine, bool blink, CancellationToken cancellationToken) =>
 {
-    DB.Notifications.Add(new Notification(firstLine, secondLine, true));
+    DB.Notifications.Add(new Notification(firstLine, secondLine, blink));
 })
 .WithOpenApi();
 

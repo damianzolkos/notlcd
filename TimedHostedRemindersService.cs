@@ -19,12 +19,12 @@ public class TimedHostedRemindersService : IHostedService, IDisposable
     private void DoWork(object? state)
     {
         var targetTime = DateTimeService.GetCurrentDateTime();
-        foreach (var reminder in  DB.Reminders.ToList())
+        foreach (var reminder in  DB.Reminders.Where(x => !x.Sent).ToList())
         {
             if (targetTime.Hour == reminder.Hour && targetTime.Minute == reminder.Minute)
             {
-                // TODO: there is a bug here that the notification will be shown for a whole minute
                 _notificationService.AddNotification(reminder.FirstLineText, reminder.SecondLineText);
+                reminder.Sent = true;
             }
         }
     }

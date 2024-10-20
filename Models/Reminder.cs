@@ -7,6 +7,8 @@ namespace notlcd.Models
         public string FirstLineText { get; set; }
         public string? SecondLineText { get; set; }
 
+        public bool Sent { get; set; }
+
         public Reminder(int hour, int minute, string firstLineText, string? secondLineText = null)
         {
             Hour = hour;
