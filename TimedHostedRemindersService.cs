@@ -23,7 +23,7 @@ public class TimedHostedRemindersService : IHostedService, IDisposable
         {
             if (targetTime.Hour == reminder.Hour && targetTime.Minute == reminder.Minute)
             {
-                _notificationService.AddNotification(reminder.FirstLineText, reminder.SecondLineText);
+                _notificationService.AddNotification(new(reminder.FirstLineText, reminder.SecondLineText, true));
                 reminder.Sent = true;
             }
         }

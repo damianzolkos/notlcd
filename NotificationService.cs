@@ -16,6 +16,11 @@ namespace notlcd
             DB.Notifications.Add(new Notification(firstLineText, secondLineText));
         }
 
+        public void AddNotification(Notification notification)
+        {
+            DB.Notifications.Add(notification);
+        }
+
         public async Task Send(Notification notification, CancellationToken cancellationToken = default)
         {
             if (notification.Blink)
