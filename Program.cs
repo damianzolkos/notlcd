@@ -1,7 +1,14 @@
 using notlcd;
 using notlcd.Models;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add logging.
+builder.Logging.ClearProviders();
+Serilog.ILogger logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+builder.Logging.AddSerilog(logger);
+builder.Services.AddSingleton(logger);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
